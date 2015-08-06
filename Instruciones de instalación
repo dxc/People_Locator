@@ -58,7 +58,8 @@ mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u "user" -p mysql
 ingresar password del usuario "user"(normalmente root)
 
 y fijar zona horaria:
-SET GLOBAL time_zone = "America/Santiago"
+mysql -u "user" -p
+SET GLOBAL time_zone = "America/Santiago";
 
 
 9)modificar archivo php.ini de su apache2 en la carpeta php5:
@@ -96,7 +97,10 @@ fijar AllowOverride con 'All' en las carpetas correspondientes(todas de ser nece
 	Require all granted
 </Directory>
 
-11) si todo salió bien, abra en su navegador: localhost/vesuvius/www/
+11) si todo salió bien reinicie el servidor(en caso de que ya lo haya iniciado)
+service apache2 start  #iniciar
+service apache2 restart  #reiniciar
+abra en su navegador: localhost/vesuvius/www/
 e ingrese con:
 username: root
 password: Vesuvius2012
