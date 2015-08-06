@@ -1,8 +1,15 @@
 Instrucciones de instalación de Vesuvius:
 
 para estas instruciónes se utilizará LAMP
+referencia: https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-14-04
 en específico: Apache 2.2+, MySQL 5+, PHP 5.3+
 
 1) descargar el código fuente de:
-
-2)
+https://github.com/Fitoz/People-Locator.git
+2)colocar todo el código fuente en:
+si es ubuntu 14.04
+/var/www/html/vesuvius
+versiones anteriores
+/var/www/vesuvius
+esto puede variar dependiendo de dónde apunte el servidor Apache.
+3)modificar el archivo sahana.conf
