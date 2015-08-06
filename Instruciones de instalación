@@ -61,7 +61,7 @@ SET GLOBAL time_zone = "America/Santiago"
 
 
 9)modificar archivo php.ini de su apache2 en la carpeta php5:
-en bloque Date, descomentar y colocar la zona horaria
+en bloque "Module Settings", descomentar y colocar la zona horaria
 date.timezone = "America/Santiago"
 
 activar la opción: short_open_tag = On
@@ -95,3 +95,9 @@ fijar AllowOverride con 'All' en las carpetas correspondientes(todas de ser nece
 	Require all granted
 </Directory>
 
+11) si todo salió bien, abra en su navegador: localhost/vesuvius/www/
+e ingrese con:
+username: root
+password: Vesuvius2012
+
+Suerte!
