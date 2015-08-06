@@ -12,4 +12,86 @@ si es ubuntu 14.04
 versiones anteriores
 /var/www/vesuvius
 esto puede variar dependiendo de dónde apunte el servidor Apache.
-3)modificar el archivo sahana.conf
+3)modificar el archivo sahana.conf en la carpeta /conf:
+
+$conf['base_uuid'] = "localhost/vesuvius/www/"; #dirección donde está instalada la aplicación, ejemplo: localhost.
+se recomiendo utilizar la ip de la máquina en lugar de localhost para facilitar su visibilidad desde redes.
+
+$conf['https'] = "http://";
+
+# Database Configuration
+$conf['db_name'] = "People-locator-database";  #nombre de la base de datos (debe ser creada previamente)
+$conf['db_host'] = "localhost"; 	       #host de la base de datos
+$conf['db_port'] = "3306";		       #Puerto, por lo general 3306
+$conf['db_user'] = "root";		       #Usuario para conectarse a la BD
+$conf['db_pass'] = "password";		       #Clave del usuario indicado (vacia por defecto si no se asignó una en la instalación de mysql)
+
+$conf['enable_solr_for_search'] = false;  #mantener con el valor false.
+
+4) crear o modificar archivo .htaccess en carpeta /www:
+
+##### Only use 1 of the following RewriteBase options ~ comment the other out
+##### for when Sahana is installed on a virtual host at root level ie. http://domain.com/
+#RewriteBase /
+##### for when Sahana is installed in a user homedir ie. http://domain.gov/~gmiernicki/sahanaDev/www/
+RewriteBase /vesuvius/www/
+
+en caso de estar instalado en un carperta de usuario mantener el primero comentado.
+
+5) Importar Base de datos de prueba(esta puede ser vaciada más tarde, esto es principalmente por el modelo)
+la base de datos está ubicada en /backups/vesuviusStarterDb_v092.sql
+se recomienda la utilizacion de phpmyadmin, en el navegador: http://localhost/phpmyadmin/ e ingresar con el usuario y pass de la base de datos.
+a la izquiera, seleccionar la base de datos y luego en las pestañas superiores seleccionar  importar(import).
+
+6)crear carpeta tmp que utiliza sahana:
+cd www 
+mkdir tmp 
+chmod 777 tmp
+
+7)installar complemento cURL de php: sudo apt-get install php5-curl
+
+8)cargar las tablas de zonas horarias a MySQL:
+por lo general están en: /usr/share/zoneinfo
+
+mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u "user" -p mysql
+ingresar password del usuario "user"(normalmente root)
+
+y fijar zona horaria:
+SET GLOBAL time_zone = "America/Santiago"
+
+
+9)modificar archivo php.ini de su apache2 en la carpeta php5:
+en bloque Date, descomentar y colocar la zona horaria
+date.timezone = "America/Santiago"
+
+activar la opción: short_open_tag = On
+
+10) permitir que apache2 pueda editar:
+sudo a2enmod rewrite
+
+editar  /etc/apache2/apache2.conf 
+fijar AllowOverride con 'All' en las carpetas correspondientes(todas de ser necesario)
+
+<Directory />
+	Options FollowSymLinks
+	AllowOverride All
+	Require all denied
+</Directory>
+
+<Directory /usr/share>
+	AllowOverride All
+	Require all granted
+</Directory>
+
+<Directory /var/www/>
+	Options Indexes FollowSymLinks
+	AllowOverride All
+	Require all granted
+</Directory>
+
+<Directory /srv/>
+	Options Indexes FollowSymLinks
+	AllowOverride All
+	Require all granted
+</Directory>
+
