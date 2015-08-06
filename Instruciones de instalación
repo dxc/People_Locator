@@ -44,7 +44,7 @@ la base de datos está ubicada en /backups/vesuviusStarterDb_v092.sql
 se recomienda la utilizacion de phpmyadmin, en el navegador: http://localhost/phpmyadmin/ e ingresar con el usuario y pass de la base de datos.
 a la izquiera, seleccionar la base de datos y luego en las pestañas superiores seleccionar  importar(import).
 
-6)crear carpeta tmp que utiliza sahana:
+6)crear carpeta tmp en la dirección /vesuvius/www/ que utiliza sahana:
 cd www 
 mkdir tmp 
 chmod 777 tmp
