@@ -12,6 +12,7 @@ si es ubuntu 14.04
 versiones anteriores
 /var/www/vesuvius
 esto puede variar dependiendo de dónde apunte el servidor Apache.
+nota: al clonar desde git se creará una carpeta "People-Locator" con el código, migre todo el contenido a la nueva carpeta creada por usted "vesuvius" en la ubicación señalada.
 3)modificar el archivo sahana.conf en la carpeta /conf:
 
 $conf['base_uuid'] = "localhost/vesuvius/www/"; #dirección donde está instalada la aplicación, ejemplo: localhost.
