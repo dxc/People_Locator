@@ -1,6 +1,6 @@
 # Sahana Vesuvius
 
-Para instrucciones de instalación en español dirigirse al archivo "Instrucciones de instalación"
+Para instrucciones de instalación en español dirigirse al archivo "Instrucciones de instalación.txt"
 
 ## Vesuvius Overview
 
