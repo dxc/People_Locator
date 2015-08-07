@@ -48,6 +48,9 @@ a la izquiera, seleccionar la base de datos y luego en las pestañas superiores 
 cd www 
 mkdir tmp 
 chmod 777 tmp
+cd tmp
+mkdir plus_cache
+chmod 777 plus_cache
 
 7)installar complemento cURL de php: sudo apt-get install php5-curl
 
